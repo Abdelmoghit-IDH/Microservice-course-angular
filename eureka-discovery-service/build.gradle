@@ -19,6 +19,7 @@ ext {
 
 dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+	implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
