@@ -1,31 +1,49 @@
 version: "3.8"
 services:
-  #client-side:
-  #  container_name: client-side
-  #  image: client-side:latest
-  #  ports:
-  #    - 80:80
-  #  depends_on:
-  #    - database
-  #    - socker-service
-  #    - auth-service
+  client-side:
+    container_name: client-side
+    image: client-side:latest
+    ports:
+      - 80:80
+    networks:
+      - app-network
+    depends_on:
+      - zuul-gateway
+      - eureka
+      - course-micro
+      - course-micro-mysql
 
-  #auth-micro:
-  #  container_name: auth-micro
-  #  image: auth-micro
-  #  ports:
-  #    - 8080:8080
-  #  depends_on:
-  #    - auth-micro-mysql
+  zuul-gateway:
+    container_name: gateway-micro
+    image: gateway-micro:latest
+    ports:
+      - 8765:8765
+    depends_on:
+      - eureka
+    networks:
+      - app-network
+    environment:
+      - eureka.client.service-url.default-zone=http://eureka-micro:8761/eureka/
 
   eureka:
     container_name: eureka-micro
-    image: eureka-image:latest
+    image: springcloud/eureka
     networks:
       - app-network
     ports:
       - 8761:8761
 
+  auth-micro:
+    container_name: auth-micro
+    image: auth-micro:latest
+    ports:
+      - 8080:8080
+    networks:
+      - app-network
+    depends_on:
+      - zuul-gateway
+      - eureka
+  
   course-micro:
     container_name: course-micro
     image: course-image:latest
@@ -38,6 +56,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=course-db
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - eureka.client.service-url.default-zone=http://eureka-micro:8761/eureka/
     depends_on:
       - course-micro-mysql
       - eureka
@@ -57,9 +76,11 @@ services:
     volumes:
       - db:/var/lib/mysql
 
+networks:
+    app-network:
+      driver: bridge
+    
 volumes:
   db:
     driver: local
 
-networks:
-  app-network: 

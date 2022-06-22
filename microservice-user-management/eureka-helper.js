@@ -1,9 +1,9 @@
 const Eureka = require('eureka-js-client').Eureka;
 
 const eurekaHost =
-  process.env.EUREKA_CLIENT_SERVICEURL_DEFAULTZONE || "127.0.0.1";
+  process.env.EUREKA_CLIENT_SERVICEURL_DEFAULTZONE || "eureka-micro";
 const eurekaPort = 8761;
-const hostName = process.env.HOSTNAME || "localhost";
+const hostName = process.env.HOSTNAME || "eureka-micro";
 const ipAddr = "172.0.0.1";
 
 function registerWithEureka (appName, PORT) {

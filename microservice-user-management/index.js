@@ -6,7 +6,7 @@ const eurekaHelper = require('./eureka-helper');
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:4200"
+  origin: "http://localhost"
 };
 
 app.use(cors(corsOptions));
