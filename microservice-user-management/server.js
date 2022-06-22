@@ -5,7 +5,7 @@ const dbConfig = require("./app/config/db.config");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:4200"
 };
 
 app.use(cors(corsOptions));
@@ -20,7 +20,7 @@ const db = require("./app/models");
 const Role = db.role;
 
 db.mongoose
-  .connect(`mongodb+srv://${dbConfig.USER}:${dbConfig.PASS}@cluster0.id8bx.mongodb.net/?retryWrites=true&w=majority`, {
+  .connect(`mongodb+srv://${dbConfig.USER}:${dbConfig.PASS}@${dbConfig.HOST}/?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
