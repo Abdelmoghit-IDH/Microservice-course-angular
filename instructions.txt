@@ -1,0 +1,10 @@
+###########Build JARs############
+cd eureka-discovery-service
+./eureka-discovery-service/gradlew bootJar 
+
+cd microservice-course-management
+gradlew bootJar 
+
+###########Build Docker images############
+docker build -t eureka-image:latest --no-cache . 
+docker build -t course-image:latest --no-cache .
