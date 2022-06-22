@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Course} from '../models/course';
 import {Transaction} from '../models/transaction';
 
-let API_URL = "http://localhost:8001/service/";
+let API_URL = "http://localhost:8765/course-service/service/";
 
 @Injectable({
   providedIn: 'root'

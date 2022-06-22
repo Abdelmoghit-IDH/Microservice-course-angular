@@ -9,9 +9,7 @@ services:
       - app-network
     depends_on:
       - zuul-gateway
-      - eureka
       - course-micro
-      - course-micro-mysql
 
   zuul-gateway:
     container_name: gateway-micro
@@ -22,8 +20,6 @@ services:
       - eureka
     networks:
       - app-network
-    environment:
-      - eureka.client.service-url.default-zone=http://eureka-micro:8761/eureka/
 
   eureka:
     container_name: eureka-micro
@@ -47,6 +43,7 @@ services:
   course-micro:
     container_name: course-micro
     image: course-image:latest
+    restart: always
     networks:
       - app-network
     ports:
@@ -56,10 +53,8 @@ services:
       - SPRING_DATASOURCE_USERNAME=course-db
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-      - eureka.client.service-url.default-zone=http://eureka-micro:8761/eureka/
     depends_on:
       - course-micro-mysql
-      - eureka
 
   course-micro-mysql:
     container_name: course-micro-mysql
