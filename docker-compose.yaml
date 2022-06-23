@@ -10,6 +10,8 @@ services:
     depends_on:
       - zuul-gateway
       - course-micro
+      - tutorial-micro
+      - eureka
 
   zuul-gateway:
     container_name: gateway-micro
@@ -58,6 +60,14 @@ services:
       - eureka
       - zuul-gateway
 
+  tutorial-micro:
+    container_name: tutorial-micro
+    image: tutorial-micro:latest
+    networks:
+      - app-network
+    ports:
+      - 8081:8081
+    
   course-micro-mysql:
     container_name: course-micro-mysql
     image: mysql:latest
