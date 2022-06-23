@@ -11,6 +11,9 @@ import { HomeComponent } from './components/home/home.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.component';
+import { TutorialDetailsComponent } from './components/tutorial-details/tutorial-details.component';
+import { TutorialsListComponent } from './components/tutorials-list/tutorials-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RegisterComponent,
     ProfileComponent,
     DetailComponent,
-    HomeComponent
+    HomeComponent,
+    AddTutorialComponent,
+    TutorialDetailsComponent,
+    TutorialsListComponent
   ],
   imports: [
     BrowserModule,
