@@ -9,3 +9,13 @@ docker build -t tutorial-micro:latest --no-cache ./microservice-tutorial-managem
 docker build -t auth-micro:latest --no-cache ./microservice-user-management
 docker build -t gateway-micro:latest --no-cache ./zuul-gateway-service
 docker build -t client-side:latest --no-cache ./client-side
+
+
+###########Eureka############
+
+http://localhost:8761/lastn
+
+
+###########Client-side############
+
+http://localhost/home
