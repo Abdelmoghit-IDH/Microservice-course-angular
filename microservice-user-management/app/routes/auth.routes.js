@@ -12,7 +12,7 @@ module.exports = function (app) {
 
   // LOGOUT
   app.get("/api/auth/logout", (req, res) => {
-    return res.redirect("/");
+    return res.json({ message: "User logged out!" });
   });
 
   app.post(
