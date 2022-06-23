@@ -1,7 +1,7 @@
 module.exports = {
-  HOST: "cluster0.id8bx.mongodb.net",
+  HOST: "auth-micro-mongodb",
   PORT: 27017,
-  DB: "bezkoder_db",
-  USER: "abdelmoghit",
-  PASS: "abdelmoghit"
+  DB: "users-db",
+  USER: "mongo-user",
+  PASS: "mongo-user"
 };
