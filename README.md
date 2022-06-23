@@ -7,6 +7,18 @@ The application structure is as follows.
 - **zuul-gateway-service** - Microservice implemented using Spring zuul. [More info](zuul-gateway-service/README.md)
 - **client-side** - A NodeJs application implemented using Angular 8. This consumes services hosted by server side.  [More info](client-side/README.md)
 
+You should have Docker installed in your server in order to run this project.
+
+The application ports.
+- **microservice-user-management** - port 8080
+- **microservice-user-management-MongoDB** - port 27017 (Mongo database)
+- **microservice-course-management** - port 8001 
+- **microservice-course-management-Mysql** - port 3306 (Mysql Database)
+- **microservice-tutorial-management** - port 8081 (H2 Database)
+- **zuul-gateway-service** - port 8765
+- **eureka-service** - port 8761
+- **client-side** - port 80
+
 ### Build
 
 #### 1) Build Spring Boot microservices
@@ -40,7 +52,7 @@ $ docker-compose up
 ```
 http://localhost/home
 ```
-### Status Eureka using following URL
+### Get the status of Eureka server using following URL
 
 ```
 http://localhost:8761/lastn
