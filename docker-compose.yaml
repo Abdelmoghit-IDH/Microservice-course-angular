@@ -55,6 +55,8 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create
     depends_on:
       - course-micro-mysql
+      - eureka
+      - zuul-gateway
 
   course-micro-mysql:
     container_name: course-micro-mysql
@@ -68,14 +70,9 @@ services:
       - MYSQL_USER=course-db
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=password
-    volumes:
-      - db:/var/lib/mysql
 
 networks:
     app-network:
       driver: bridge
-    
-volumes:
-  db:
-    driver: local
+  
 
